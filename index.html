@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SWEET CHEF 🍓 — Qizlar uchun pazandachilik va oshxona o'yinlari</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍓</text></svg>">
+  
+  <!-- Google Fonts: Fredoka & Quicksand -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Floating Confection Elements -->
+  <div class="ambient-decorations" aria-hidden="true">
+    <span class="floating-item item-1">🍓</span>
+    <span class="floating-item item-2">🧁</span>
+    <span class="floating-item item-3">🍒</span>
+    <span class="floating-item item-4">🍩</span>
+    <span class="floating-item item-5">🍪</span>
+    <span class="floating-item item-6">✨</span>
+    <span class="floating-item item-7">🍰</span>
+    <span class="floating-item item-8">🍭</span>
+  </div>
+
+  <!-- Confetti Canvas for Victory Celebrations -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- ======================================================== -->
+  <!-- 1. WELCOME SCREEN: AGE SELECTION                         -->
+  <!-- ======================================================== -->
+  <section id="screen-welcome" class="screen active">
+    <div class="welcome-container">
+      <div class="welcome-header">
+        <div class="brand-badge pulse">
+          <span class="badge-icon">🍓</span>
+          <span class="badge-text">SWEET CHEF BAKERY</span>
+        </div>
+        <h1 class="welcome-title">Welcome to Sweet Chef! <span class="wave">👩🍳</span></h1>
+        <p class="welcome-lead">Bugun o‘zingning mazali oshxona sarguzashtingni boshlashga tayyormisan?</p>
+        <p class="welcome-sub">Yoshingni tanla va o‘zingga mos oshxona o‘yinlarini boshlagin!</p>
+      </div>
+
+      <!-- 4 Age Category Cards -->
+      <div class="age-cards-grid">
+        <!-- 3-5 yosh: Little Chef -->
+        <div class="age-card card-little" data-age-key="little" data-min="3" data-max="5" data-title="Little Chef" tabindex="0" role="button">
+          <div class="card-glow"></div>
+          <div class="card-badge">3–5 yosh</div>
+          <div class="card-icon-wrapper">
+            <span class="card-emoji bounce-hover">🧁</span>
+          </div>
+          <h2 class="card-title">Little Chef</h2>
+          <p class="card-desc">Ranglar, mevalar, shakllar va oddiy, xavfsiz oshxona o‘yinlari.</p>
+          <div class="card-tags">
+            <span>🍎 Mevalar</span>
+            <span>🍪 Shakllar</span>
+            <span>🎂 Bezatish</span>
+          </div>
+          <button class="btn-card-select">Boshlash <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <!-- 6-9 yosh: Junior Chef -->
+        <div class="age-card card-junior" data-age-key="junior" data-min="6" data-max="9" data-title="Junior Chef" tabindex="0" role="button">
+          <div class="card-glow"></div>
+          <div class="card-badge">6–9 yosh</div>
+          <div class="card-icon-wrapper">
+            <span class="card-emoji bounce-hover">🍓</span>
+          </div>
+          <h2 class="card-title">Junior Chef</h2>
+          <p class="card-desc">Pitsa, cupcake, mevali salat, sendvich va qiziqarli oshxona retseptlari.</p>
+          <div class="card-tags">
+            <span>🍕 Pizza Maker</span>
+            <span>🥪 Sandwich</span>
+            <span>🧠 Memory</span>
+          </div>
+          <button class="btn-card-select">Boshlash <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <!-- 10-15 yosh: Creative Chef -->
+        <div class="age-card card-creative" data-age-key="creative" data-min="10" data-max="15" data-title="Creative Chef" tabindex="0" role="button">
+          <div class="card-glow"></div>
+          <div class="card-badge">10–15 yosh</div>
+          <div class="card-icon-wrapper">
+            <span class="card-emoji bounce-hover">🍰</span>
+          </div>
+          <h2 class="card-title">Creative Chef</h2>
+          <p class="card-desc">Retseptlar, ingredientlar, tort dizayni, challenge va restoran boshqaruvi.</p>
+          <div class="card-tags">
+            <span>🎂 3-Tier Cake</span>
+            <span>🍹 Smoothie</span>
+            <span>🥐 Bakery Shop</span>
+          </div>
+          <button class="btn-card-select">Boshlash <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+
+        <!-- 16-20 yosh: Master Chef -->
+        <div class="age-card card-master" data-age-key="master" data-min="16" data-max="20" data-title="Master Chef" tabindex="0" role="button">
+          <div class="card-glow"></div>
+          <div class="card-badge">16–20 yosh</div>
+          <div class="card-icon-wrapper">
+            <span class="card-emoji bounce-hover">👩🍳</span>
+          </div>
+          <h2 class="card-title">Master Chef</h2>
+          <p class="card-desc">Murakkab retseptlar, taom dizayni, sirli ingredientlar va oshxona simulyatsiyasi.</p>
+          <div class="card-tags">
+            <span>📸 Food Styling</span>
+            <span>🍽️ Restaurant Sim</span>
+            <span>📝 Recipe Creator</span>
+          </div>
+          <button class="btn-card-select">Boshlash <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+
+      <div class="welcome-footer">
+        <p><i class="fa-solid fa-shield-heart"></i> Barcha o‘yinlar xavfsiz, qiziqarli va qizlarimizning ijodkorligini oshirish uchun yaratilgan!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 2. USERNAME REGISTRATION SCREEN                          -->
+  <!-- ======================================================== -->
+  <section id="screen-username" class="screen">
+    <div class="username-modal-box glass-card">
+      <button id="btn-back-to-age" class="btn-icon-back" title="Orqaga qaytish">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+
+      <div class="username-header">
+        <div class="selected-category-pill" id="username-cat-pill">
+          <span id="username-cat-icon">🧁</span>
+          <span id="username-cat-name">Little Chef</span> (3–5 yosh)
+        </div>
+        <h2 class="username-title" id="username-greeting-title">Welcome, Little Chef! 🍓</h2>
+        <p class="username-subtitle">Ismingni kiriting, oshxonamizda seni shu ism bilan chaqiramiz!</p>
+      </div>
+
+      <!-- Avatar Picker -->
+      <div class="avatar-selection-wrapper">
+        <p class="avatar-label">O'zingga yoqqan oshpaz obrazini tanla:</p>
+        <div class="avatar-options" id="avatar-options-list">
+          <button type="button" class="avatar-btn selected" data-avatar="👩🍳">👩🍳</button>
+          <button type="button" class="avatar-btn" data-avatar="👧">👧</button>
+          <button type="button" class="avatar-btn" data-avatar="🎀">🎀</button>
+          <button type="button" class="avatar-btn" data-avatar="🧁">🧁</button>
+          <button type="button" class="avatar-btn" data-avatar="🍓">🍓</button>
+          <button type="button" class="avatar-btn" data-avatar="👑">👑</button>
+        </div>
+      </div>
+
+      <!-- Input Form -->
+      <form id="username-form" class="username-form" onsubmit="return false;">
+        <div class="input-group">
+          <span class="input-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+          <input 
+            type="text" 
+            id="input-username" 
+            class="input-field" 
+            placeholder="Enter your username..." 
+            maxlength="20"
+            autocomplete="off" 
+            required 
+          />
+        </div>
+        <div id="username-error-msg" class="error-msg"></div>
+
+        <button type="submit" id="btn-start-cooking" class="btn-primary-glow btn-large">
+          <span>LET'S COOK! 🍳</span>
+          <i class="fa-solid fa-fire-burner"></i>
+        </button>
+      </form>
+
+      <div class="username-hint">
+        <span>✨ Masalan: <i>Malika</i>, <i>Madina</i>, <i>Zahro</i>, <i>Laylo</i></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 3. MAIN APP SHELL & DASHBOARD                            -->
+  <!-- ======================================================== -->
+  <section id="screen-dashboard" class="screen">
+    <!-- Main Top Navigation -->
+    <header class="main-navbar">
+      <div class="nav-container">
+        <!-- Logo -->
+        <div class="nav-brand" id="nav-brand-logo" role="button" tabindex="0">
+          <span class="brand-logo-icon">🍓</span>
+          <div class="brand-text-block">
+            <span class="brand-title">SWEET CHEF</span>
+            <span class="brand-sub">GIRLS COOKING STUDIO</span>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="nav-menu" id="nav-menu">
+          <button class="nav-link active" data-view="home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+          </button>
+          <button class="nav-link" data-view="games">
+            <i class="fa-solid fa-gamepad"></i>
+            <span>Cooking Games</span>
+          </button>
+          <button class="nav-link" data-view="recipes">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Recipes</span>
+          </button>
+          <button class="nav-link" data-view="kitchen">
+            <i class="fa-solid fa-kitchen-set"></i>
+            <span>My Kitchen</span>
+          </button>
+          <button class="nav-link" data-view="achievements">
+            <i class="fa-solid fa-award"></i>
+            <span>Achievements</span>
+          </button>
+        </nav>
+
+        <!-- Right User Stats & Controls -->
+        <div class="nav-controls">
+          <!-- Coins / Score Pill -->
+          <div class="score-pill" title="Jami to'plangan oshxona ballaringiz">
+            <span class="score-icon">⭐</span>
+            <span class="score-val" id="nav-score-display">0</span>
+            <span class="score-unit">ball</span>
+          </div>
+
+          <!-- Sound FX Toggle -->
+          <button id="btn-toggle-sound" class="btn-ctrl-icon" title="Ovoz effektlari" aria-label="Toggle Sound FX">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+
+          <!-- BGM Ambient Music Toggle -->
+          <button id="btn-toggle-bgm" class="btn-ctrl-icon" title="Musiqa (Ambient BGM)" aria-label="Toggle Background Music">
+            <i class="fa-solid fa-music"></i>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button id="btn-toggle-theme" class="btn-ctrl-icon" title="Tungi / Kunduzgi rejim" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+
+          <!-- User Profile Mini Pill -->
+          <div class="user-profile-pill" id="nav-profile-pill" role="button" tabindex="0" title="Profilni ko'rish">
+            <span class="user-avatar" id="nav-user-avatar">👩🍳</span>
+            <span class="user-name" id="nav-user-name">Malika</span>
+          </div>
+
+          <!-- Settings Button -->
+          <button id="btn-open-settings" class="btn-ctrl-icon" title="Sozlamalar" aria-label="Settings">
+            <i class="fa-solid fa-gear"></i>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button id="btn-mobile-menu" class="btn-ctrl-icon mobile-only" aria-label="Open Mobile Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-drawer" class="mobile-drawer">
+      <div class="drawer-header">
+        <div class="drawer-brand">🍓 SWEET CHEF</div>
+        <button id="btn-close-drawer" class="btn-close-sm"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="drawer-user-info">
+        <span class="drawer-avatar" id="drawer-user-avatar">👩🍳</span>
+        <div>
+          <h4 id="drawer-user-name">Malika</h4>
+          <span class="drawer-role" id="drawer-user-role">Junior Chef</span>
+        </div>
+      </div>
+      <div class="drawer-links">
+        <button class="drawer-link active" data-view="home"><i class="fa-solid fa-house"></i> Home</button>
+        <button class="drawer-link" data-view="games"><i class="fa-solid fa-gamepad"></i> Cooking Games</button>
+        <button class="drawer-link" data-view="recipes"><i class="fa-solid fa-book-open"></i> Recipes</button>
+        <button class="drawer-link" data-view="kitchen"><i class="fa-solid fa-kitchen-set"></i> My Kitchen</button>
+        <button class="drawer-link" data-view="achievements"><i class="fa-solid fa-award"></i> Achievements</button>
+        <button class="drawer-link" id="drawer-settings-btn"><i class="fa-solid fa-gear"></i> Settings</button>
+      </div>
+    </div>
+
+    <!-- MAIN VIEWS WRAPPER -->
+    <main class="main-content-area">
+
+      <!-- ==================================================== -->
+      <!-- VIEW 1: HOME PAGE DASHBOARD                          -->
+      <!-- ==================================================== -->
+      <section id="view-home" class="dashboard-view active">
+        <!-- Hero Section -->
+        <div class="hero-banner glass-card">
+          <div class="hero-content">
+            <div class="hero-chef-badge">
+              <span id="hero-badge-icon">🍓</span>
+              <span id="hero-badge-text">Junior Chef oshxonasi</span>
+            </div>
+            <h1 class="hero-title">
+              Hello, <span class="highlight-name" id="hero-username">Malika</span>! <span class="hero-chef-icon">👩🍳</span>
+            </h1>
+            <p class="hero-lead">Welcome to your magical kitchen!</p>
+            <p class="hero-desc">
+              Bugun yangi retseptlar, mazali o‘yinlar va oshxona sarguzashtlari seni kutmoqda!
+            </p>
+
+            <div class="hero-cta-buttons">
+              <button class="btn-primary-glow" id="hero-btn-start">
+                <i class="fa-solid fa-fire-burner"></i> Start Cooking
+              </button>
+              <button class="btn-secondary" id="hero-btn-explore">
+                <i class="fa-solid fa-gamepad"></i> Explore Games
+              </button>
+              <button class="btn-outline" id="hero-btn-recipes">
+                <i class="fa-solid fa-book-bookmark"></i> My Recipes
+              </button>
+            </div>
+
+            <!-- Personalized Greeting Bar -->
+            <div class="hero-quote-box">
+              <span class="quote-sparkle">✨</span>
+              <span class="quote-text" id="hero-dynamic-quote">"Malika, bugun nima tayyorlaymiz?"</span>
+            </div>
+          </div>
+
+          <!-- Hero Illustration Graphics -->
+          <div class="hero-visual">
+            <div class="food-art-stage">
+              <div class="cake-display-bubble">
+                <span class="food-hero-emoji hero-item-cake">🎂</span>
+                <span class="food-hero-emoji hero-item-cupcake">🧁</span>
+                <span class="food-hero-emoji hero-item-pizza">🍕</span>
+                <span class="food-hero-emoji hero-item-donut">🍩</span>
+                <span class="food-hero-emoji hero-item-strawberry">🍓</span>
+              </div>
+              <div class="steam-container">
+                <span class="steam s-1">~</span>
+                <span class="steam s-2">~</span>
+                <span class="steam s-3">~</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daily Cooking Challenge Banner -->
+        <div class="daily-challenge-card glass-card">
+          <div class="challenge-icon-box">
+            <span class="daily-badge">KUNLIK VAZIFA</span>
+            <span class="challenge-icon" id="daily-challenge-icon">🧁</span>
+          </div>
+          <div class="challenge-info">
+            <div class="challenge-meta">
+              <span class="challenge-tag"><i class="fa-solid fa-calendar-day"></i> Bugungi Challenge</span>
+              <span class="challenge-reward"><i class="fa-solid fa-star"></i> +100 ball mukofot</span>
+            </div>
+            <h3 class="challenge-title" id="daily-challenge-title">Bugun cupcake bezat!</h3>
+            <p class="challenge-desc" id="daily-challenge-desc">O'zingning eng sevimli mevalaring va kremlaring bilan chiroyli cupcake tayyorla.</p>
+          </div>
+          <div class="challenge-action">
+            <button class="btn-accent" id="btn-play-daily">
+              <i class="fa-solid fa-play"></i> Bajarish
+            </button>
+          </div>
+        </div>
+
+        <!-- Age Switcher / Recommendations Strip -->
+        <div class="section-header-row">
+          <div>
+            <h2 class="section-title">Sizga tavsiya etilgan o‘yinlar 🎯</h2>
+            <p class="section-subtitle">Yoshingizga mos, eng qiziqarli pazandachilik mashg‘ulotlari</p>
+          </div>
+          <div class="category-quick-pills" id="home-category-pills">
+            <button class="pill-btn active" data-filter="recommended">Tavsiya etilgan</button>
+            <button class="pill-btn" data-filter="all">Barcha o'yinlar</button>
+          </div>
+        </div>
+
+        <!-- Featured Games Grid -->
+        <div class="games-grid" id="home-featured-games-grid">
+          <!-- Dynamically populated by JS -->
+        </div>
+
+        <!-- Quick Chef Tips / Facts Strip -->
+        <div class="chef-tips-card glass-card">
+          <div class="tip-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div class="tip-content">
+            <h4>Sweet Chef Pazandachilik Sirlari 🍓</h4>
+            <p id="chef-fact-text">Cupcake pishirishda barcha masalliqlar (tuxum, sut, sariyog') xona haroratida bo'lsa, xamir juda yumshoq va havodor chiqadi!</p>
+          </div>
+          <button class="btn-icon-sm" id="btn-next-tip" title="Keyingi maslahat"><i class="fa-solid fa-rotate-right"></i></button>
+        </div>
+      </section>
+
+      <!-- ==================================================== -->
+      <!-- VIEW 2: COOKING GAMES CATALOG                        -->
+      <!-- ==================================================== -->
+      <section id="view-games" class="dashboard-view">
+        <div class="view-header">
+          <div>
+            <h1 class="view-title">Cooking Games Katalogi 🎮🍓</h1>
+            <p class="view-desc">3 yoshdan 20 yoshgacha bo‘lgan barcha qizlar uchun 22 ta interaktiv, o'rgatuvchi va to‘liq funksional o‘yinlar!</p>
+          </div>
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="games-search-input" placeholder="O'yin nomi bo'yicha qidirish..." />
+          </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="games-filter-bar">
+          <button class="filter-tab active" data-cat="all">
+            <span class="tab-icon">🌟</span>
+            <span class="tab-name">Barcha O'yinlar</span>
+            <span class="tab-count" id="count-all">22</span>
+          </button>
+          <button class="filter-tab" data-cat="little">
+            <span class="tab-icon">🧁</span>
+            <span class="tab-name">3–5 yosh (Little Chef)</span>
+            <span class="tab-count">5</span>
+          </button>
+          <button class="filter-tab" data-cat="junior">
+            <span class="tab-icon">🍓</span>
+            <span class="tab-name">6–9 yosh (Junior Chef)</span>
+            <span class="tab-count">5</span>
+          </button>
+          <button class="filter-tab" data-cat="creative">
+            <span class="tab-icon">🍰</span>
+            <span class="tab-name">10–15 yosh (Creative Chef)</span>
+            <span class="tab-count">6</span>
+          </button>
+          <button class="filter-tab" data-cat="master">
+            <span class="tab-icon">👩🍳</span>
+            <span class="tab-name">16–20 yosh (Master Chef)</span>
+            <span class="tab-count">6</span>
+          </button>
+        </div>
+
+        <!-- All Games Grid -->
+        <div class="games-grid" id="catalog-games-grid">
+          <!-- 22 Game Cards rendered via JS -->
+        </div>
+      </section>
+
+      <!-- ==================================================== -->
+      <!-- VIEW 3: RECIPE BOOK                                  -->
+      <!-- ==================================================== -->
+      <section id="view-recipes" class="dashboard-view">
+        <div class="view-header">
+          <div>
+            <h1 class="view-title">Sehrli Retseptlar Kitobi 📖✨</h1>
+            <p class="view-desc">Har bir qizaloq o‘rganishi mumkin bo‘lgan eng mazali, foydali va xushbo‘y taom retseptlari to‘plami!</p>
+          </div>
+          <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="recipe-search-input" placeholder="Retsept nomini qidiring..." />
+          </div>
+        </div>
+
+        <!-- Recipe Filters -->
+        <div class="recipe-filter-bar">
+          <button class="filter-pill active" data-rtype="all">Barchasi</button>
+          <button class="filter-pill" data-rtype="dessert">🧁 Shirinliklar</button>
+          <button class="filter-pill" data-rtype="snack">🍕 Pitsa & Fastfood</button>
+          <button class="filter-pill" data-rtype="drink">🍹 Ichimliklar</button>
+          <button class="filter-pill" data-rtype="breakfast">🥞 Nonushta</button>
+        </div>
+
+        <!-- Recipe Cards Grid -->
+        <div class="recipes-grid" id="recipes-catalog-grid">
+          <!-- 10+ Recipe Cards rendered via JS -->
+        </div>
+      </section>
+
+      <!-- ==================================================== -->
+      <!-- VIEW 4: MY KITCHEN (PROFILE & DASHBOARD)             -->
+      <!-- ==================================================== -->
+      <section id="view-kitchen" class="dashboard-view">
+        <!-- Profile Banner -->
+        <div class="kitchen-profile-card glass-card">
+          <div class="kitchen-profile-left">
+            <div class="avatar-large-wrapper">
+              <span class="avatar-large" id="kitchen-user-avatar">👩🍳</span>
+              <button class="avatar-edit-badge" id="btn-change-avatar" title="Avatar almashtirish">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+            </div>
+            <div class="kitchen-user-details">
+              <div class="kitchen-user-badge" id="kitchen-category-badge">Junior Chef (6–9 yosh)</div>
+              <h1 class="kitchen-username" id="kitchen-display-name">Malika</h1>
+              <p class="kitchen-bio" id="kitchen-user-motto">"Mazali taomlar — baxtli kunlar garovi! 🍓"</p>
+              <div class="kitchen-action-btns">
+                <button class="btn-sm btn-outline" id="btn-edit-username">
+                  <i class="fa-solid fa-signature"></i> Ismni o'zgartirish
+                </button>
+                <button class="btn-sm btn-outline" id="btn-change-age-group">
+                  <i class="fa-solid fa-cake-candles"></i> Yosh toifasini almashtirish
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="kitchen-profile-right">
+            <div class="rank-card">
+              <div class="rank-stars" id="kitchen-rank-stars">⭐⭐⭐</div>
+              <div class="rank-name" id="kitchen-rank-title">Oltin Oshpaz Qiz</div>
+              <div class="rank-progress-bar">
+                <div class="rank-progress-fill" id="kitchen-rank-fill" style="width: 45%;"></div>
+              </div>
+              <span class="rank-label" id="kitchen-rank-status">Keyingi unvongacha: 55 ball</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kitchen Statistics Grid -->
+        <div class="stats-overview-grid">
+          <div class="stat-box">
+            <div class="stat-icon stat-icon-gold"><i class="fa-solid fa-trophy"></i></div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-total-score">0</span>
+              <span class="stat-title">Umumiy Ball</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon stat-icon-pink"><i class="fa-solid fa-gamepad"></i></div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-games-played">0</span>
+              <span class="stat-title">O'ynalgan O'yinlar</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon stat-icon-orange"><i class="fa-solid fa-utensils"></i></div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-dishes-cooked">0</span>
+              <span class="stat-title">Tayyorlangan Taomlar</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon stat-icon-purple"><i class="fa-solid fa-award"></i></div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-achievements-unlocked">0/10</span>
+              <span class="stat-title">Ochilgan Yutuqlar</span>
+            </div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon stat-icon-green"><i class="fa-solid fa-star"></i></div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-best-score">0</span>
+              <span class="stat-title">Eng Yuqori Ball</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom Saved Recipes Section -->
+        <div class="saved-recipes-section">
+          <div class="section-header-row">
+            <div>
+              <h2 class="section-title">Mening Maxsus Retseptlarim 📝👩🍳</h2>
+              <p class="section-subtitle">"Recipe Creator" studiyasida o‘zingiz yaratgan shaxsiy retseptlar</p>
+            </div>
+            <button class="btn-accent" id="btn-create-new-recipe">
+              <i class="fa-solid fa-plus"></i> Yangi Retsept Yaratish
+            </button>
+          </div>
+          <div class="saved-recipes-grid" id="kitchen-saved-recipes-grid">
+            <!-- Dynamically populated or empty state -->
+          </div>
+        </div>
+
+        <!-- Trophies Shelf Section -->
+        <div class="trophy-shelf-section glass-card">
+          <div class="shelf-header">
+            <h3><i class="fa-solid fa-crown text-gold"></i> Oshxona Shon-sharaf Tokchasi</h3>
+            <button class="btn-text" id="btn-view-all-achievements">Barcha yutuqlarni ko'rish &rarr;</button>
+          </div>
+          <div class="trophies-row" id="kitchen-trophies-row">
+            <!-- Badges rendered via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================== -->
+      <!-- VIEW 5: ACHIEVEMENTS & REWARDS                       -->
+      <!-- ==================================================== -->
+      <section id="view-achievements" class="dashboard-view">
+        <div class="view-header">
+          <div>
+            <h1 class="view-title">Oshxona Yutuqlari & Mukofotlar 🏆✨</h1>
+            <p class="view-desc">O'yinlarni o‘ynab yangi pazandachilik mahoratlarini egallang va sharafli unvonlarni oching!</p>
+          </div>
+          <div class="achievements-summary-badge">
+            <span class="summary-label">Progress:</span>
+            <span class="summary-count" id="achievements-progress-label">0 / 10</span>
+          </div>
+        </div>
+
+        <!-- Achievements Grid -->
+        <div class="achievements-grid" id="achievements-list-grid">
+          <!-- 10 Detailed Achievement Cards rendered via JS -->
+        </div>
+      </section>
+
+    </main>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- 4. MODALS & OVERLAYS                                     -->
+  <!-- ======================================================== -->
+
+  <!-- A. ACTIVE GAME ARENA MODAL -->
+  <div id="modal-game-arena" class="modal-overlay">
+    <div class="game-arena-container">
+      <!-- Arena Header -->
+      <div class="arena-topbar">
+        <div class="arena-game-meta">
+          <span class="arena-icon" id="arena-game-icon">🍕</span>
+          <div>
+            <h2 class="arena-title" id="arena-game-title">Make Your Pizza</h2>
+            <span class="arena-badge" id="arena-game-badge">Junior Chef (6–9 yosh)</span>
+          </div>
+        </div>
+
+        <!-- Live Score & Step Status -->
+        <div class="arena-status-bar">
+          <div class="arena-score-pill">
+            <span>Ball:</span>
+            <strong id="arena-current-score">0</strong>
+          </div>
+          <div class="arena-step-indicator" id="arena-step-label">
+            Bosqich: 1 / 4
+          </div>
+        </div>
+
+        <!-- Action Controls -->
+        <div class="arena-controls">
+          <button id="arena-btn-sound" class="btn-ctrl-sm" title="Ovoz">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+          <button id="arena-btn-restart" class="btn-ctrl-sm" title="Qaytadan boshlash">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button id="arena-btn-close" class="btn-ctrl-sm btn-close-modal" title="Chiqish">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Interactive Game Stage Canvas -->
+      <div class="arena-body" id="arena-game-stage">
+        <!-- Rendered dynamically by game engine JS -->
+      </div>
+
+      <!-- Victory / Game Complete Screen Overlay -->
+      <div id="arena-victory-overlay" class="arena-victory-overlay">
+        <div class="victory-card glass-card pop-in">
+          <div class="victory-crown">👑</div>
+          <div class="victory-stars" id="victory-stars-display">⭐⭐⭐</div>
+          <h2 class="victory-title" id="victory-title-text">Ajoyib, Malika! Taoming juda chiroyli! 🎉</h2>
+          <p class="victory-desc" id="victory-desc-text">Sen haqiqiy pazanda oshpazsan! Retsept ajoyib tarzda bajarildi.</p>
+          
+          <div class="victory-reward-badge">
+            <span class="reward-icon">⭐</span>
+            <span class="reward-text">+<span id="victory-earned-points">50</span> Ball qo‘shildi!</span>
+          </div>
+
+          <div class="victory-actions">
+            <button class="btn-primary-glow" id="victory-btn-replay">
+              <i class="fa-solid fa-rotate-left"></i> Yana o‘ynash
+            </button>
+            <button class="btn-secondary" id="victory-btn-games">
+              <i class="fa-solid fa-gamepad"></i> Boshqa o‘yinlar
+            </button>
+            <button class="btn-outline" id="victory-btn-kitchen">
+              <i class="fa-solid fa-kitchen-set"></i> Oshxonam
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B. RECIPE DETAILS MODAL -->
+  <div id="modal-recipe-detail" class="modal-overlay">
+    <div class="recipe-modal-box glass-card">
+      <button class="btn-close-modal modal-close-btn" id="recipe-modal-close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="recipe-modal-header">
+        <div class="recipe-modal-img-wrap">
+          <span class="recipe-modal-emoji" id="rm-emoji">🧁</span>
+        </div>
+        <div class="recipe-modal-title-wrap">
+          <div class="recipe-meta-badges">
+            <span class="recipe-badge-type" id="rm-type">Shirinlik</span>
+            <span class="recipe-badge-time" id="rm-time"><i class="fa-regular fa-clock"></i> 25 daqiqa</span>
+            <span class="recipe-badge-diff" id="rm-diff">Oson</span>
+          </div>
+          <h2 class="recipe-modal-title" id="rm-title">Mevali Cupcake</h2>
+          <p class="recipe-modal-desc" id="rm-desc">Yumshoq vanilli xamir va yangi qulupnayli qaymoqli krem bilan tayyorlanadigan shohona desert.</p>
+        </div>
+      </div>
+
+      <div class="recipe-modal-content-grid">
+        <!-- Ingredients Checklist -->
+        <div class="recipe-ingredients-col">
+          <h4 class="col-title"><i class="fa-solid fa-basket-shopping text-pink"></i> Masalliqlar:</h4>
+          <ul class="ingredients-checklist" id="rm-ingredients-list">
+            <!-- Injected by JS -->
+          </ul>
+        </div>
+
+        <!-- Preparation Steps -->
+        <div class="recipe-steps-col">
+          <h4 class="col-title"><i class="fa-solid fa-list-check text-pink"></i> Tayyorlash Bosqichlari:</h4>
+          <ol class="recipe-steps-list" id="rm-steps-list">
+            <!-- Injected by JS -->
+          </ol>
+        </div>
+      </div>
+
+      <!-- Chef Secret Tip -->
+      <div class="recipe-modal-tip">
+        <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
+        <div>
+          <strong>Oshpaz siri:</strong>
+          <span id="rm-tip">Krem quyuq bo'lishi uchun qaymoqni ko'pirtirishdan oldin muzlatgichda 2 soat sovuting.</span>
+        </div>
+      </div>
+
+      <!-- Footer Action -->
+      <div class="recipe-modal-footer">
+        <button class="btn-primary-glow" id="rm-btn-cook-in-game">
+          <i class="fa-solid fa-gamepad"></i> Ushbu taomni o‘yinda tayyorlash!
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- C. RECIPE CREATOR MODAL (For Master Chef 16-20) -->
+  <div id="modal-recipe-creator" class="modal-overlay">
+    <div class="creator-modal-box glass-card">
+      <button class="btn-close-modal modal-close-btn" id="creator-modal-close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="creator-header">
+        <div class="creator-icon">📝👩🍳</div>
+        <div>
+          <h2>Yangi Maxsus Retsept Yaratish</h2>
+          <p>O'zingizning mualliflik retseptingizni yarating va shaxsiy oshxona kitobingizga saqlang!</p>
+        </div>
+      </div>
+
+      <form id="form-recipe-creator" class="creator-form" onsubmit="return false;">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="rc-name">Retsept Nomi *</label>
+            <input type="text" id="rc-name" class="input-field" placeholder="Masalan: Shokoladli Qulupnayli Desert" required />
+          </div>
+          <div class="form-group">
+            <label for="rc-category">Kategoriya</label>
+            <select id="rc-category" class="input-field">
+              <option value="dessert">🧁 Shirinliklar</option>
+              <option value="snack">🍕 Pitsa & Fastfood</option>
+              <option value="drink">🍹 Ichimliklar</option>
+              <option value="breakfast">🥞 Nonushta</option>
+              <option value="main">🍝 Asosiy taom</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-3">
+          <div class="form-group">
+            <label for="rc-time">Tayyorlash vaqti</label>
+            <input type="text" id="rc-time" class="input-field" placeholder="Masalan: 30 daqiqa" />
+          </div>
+          <div class="form-group">
+            <label for="rc-diff">Murakkablik</label>
+            <select id="rc-diff" class="input-field">
+              <option value="Oson">Oson</option>
+              <option value="O'rtacha">O'rtacha</option>
+              <option value="Professional">Professional</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="rc-emoji">Taom Emojisi</label>
+            <select id="rc-emoji" class="input-field">
+              <option value="🍰">🍰 Shirin tort</option>
+              <option value="🧁">🧁 Cupcake</option>
+              <option value="🍕">🍕 Pitsa</option>
+              <option value="🍓">🍓 Qulupnayli salat</option>
+              <option value="🥪">🥪 Sendvich</option>
+              <option value="🍩">🍩 Donut</option>
+              <option value="🥞">🥞 Pankeyk</option>
+              <option value="🍹">🍹 Smuzi</option>
+              <option value="🍝">🍝 Pasta</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rc-desc">Taom haqida qisqacha ma'lumot</label>
+          <input type="text" id="rc-desc" class="input-field" placeholder="Mazali, chiroyli va foydali..." />
+        </div>
+
+        <!-- Dynamic Ingredients Builder -->
+        <div class="form-group">
+          <div class="section-label-row">
+            <label>Kerakli Ingredientlar *</label>
+            <button type="button" class="btn-text-sm" id="btn-add-ingredient-row">
+              <i class="fa-solid fa-plus"></i> Ingredient qo‘shish
+            </button>
+          </div>
+          <div class="dynamic-inputs-list" id="rc-ingredients-list">
+            <div class="dynamic-row">
+              <input type="text" class="input-field rc-ing-input" placeholder="Masalan: 200g Un" required />
+              <button type="button" class="btn-remove-row" title="O'chirish"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+            <div class="dynamic-row">
+              <input type="text" class="input-field rc-ing-input" placeholder="Masalan: 2 dona Tuxum" required />
+              <button type="button" class="btn-remove-row" title="O'chirish"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Steps Builder -->
+        <div class="form-group">
+          <div class="section-label-row">
+            <label>Tayyorlash Bosqichlari *</label>
+            <button type="button" class="btn-text-sm" id="btn-add-step-row">
+              <i class="fa-solid fa-plus"></i> Bosqich qo‘shish
+            </button>
+          </div>
+          <div class="dynamic-inputs-list" id="rc-steps-list">
+            <div class="dynamic-row">
+              <input type="text" class="input-field rc-step-input" placeholder="1-bosqich: Masalliqlarni idishga solib aralashtiramiz" required />
+              <button type="button" class="btn-remove-row" title="O'chirish"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+            <div class="dynamic-row">
+              <input type="text" class="input-field rc-step-input" placeholder="2-bosqich: 180 darajada 20 daqiqa pishiramiz" required />
+              <button type="button" class="btn-remove-row" title="O'chirish"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="rc-tip">Oshpaz Maxfiy Siri (Maslahat)</label>
+          <input type="text" id="rc-tip" class="input-field" placeholder="Masalan: Haroratni to'g'ri saqlang..." />
+        </div>
+
+        <div class="creator-actions">
+          <button type="submit" class="btn-primary-glow" id="btn-save-custom-recipe">
+            <i class="fa-solid fa-floppy-disk"></i> Retseptni Saqlash (+50 ball)
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- D. SETTINGS MODAL -->
+  <div id="modal-settings" class="modal-overlay">
+    <div class="settings-modal-box glass-card">
+      <button class="btn-close-modal modal-close-btn" id="settings-modal-close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="settings-header">
+        <div class="settings-icon">⚙️</div>
+        <h2>Oshxona Sozlamalari</h2>
+      </div>
+
+      <div class="settings-list">
+        <!-- Sound FX -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon-pill"><i class="fa-solid fa-volume-high"></i></div>
+            <div>
+              <h4>Ovoz Effektlari (Sound FX)</h4>
+              <p>O'yinlar, bosishlar va yutuq tovushlari</p>
+            </div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="setting-sound-toggle" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Ambient BGM -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon-pill"><i class="fa-solid fa-music"></i></div>
+            <div>
+              <h4>Orqa Fon Musiqasi (Music)</h4>
+              <p>Sehrli kafe va shirinlik musiqasi</p>
+            </div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="setting-bgm-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Dark/Light Theme -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon-pill"><i class="fa-solid fa-moon"></i></div>
+            <div>
+              <h4>Tungi Rejim (Dark Mode)</h4>
+              <p>Pastel shokoladli qulay mavzu</p>
+            </div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="setting-theme-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <!-- Username Change -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon-pill"><i class="fa-solid fa-user-pen"></i></div>
+            <div>
+              <h4>Username'ni o'zgartirish</h4>
+              <p>Hozirgi ismingiz: <strong id="setting-current-username">Malika</strong></p>
+            </div>
+          </div>
+          <button class="btn-sm btn-outline" id="setting-btn-change-name">O'zgartirish</button>
+        </div>
+
+        <!-- Age Group Switch -->
+        <div class="setting-item">
+          <div class="setting-info">
+            <div class="setting-icon-pill"><i class="fa-solid fa-shapes"></i></div>
+            <div>
+              <h4>Yosh toifasini o'zgartirish</h4>
+              <p>Hozirgi toifa: <strong id="setting-current-category">Junior Chef</strong></p>
+            </div>
+          </div>
+          <button class="btn-sm btn-outline" id="setting-btn-switch-age">Almashtirish</button>
+        </div>
+
+        <!-- Reset Progress -->
+        <div class="setting-item danger-zone">
+          <div class="setting-info">
+            <div class="setting-icon-pill red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div>
+              <h4>Natijalarni tozalash (Reset Progress)</h4>
+              <p>Barcha ballar, saqlangan retseptlar va yutuqlar o'chiriladi</p>
+            </div>
+          </div>
+          <button class="btn-sm btn-danger" id="setting-btn-reset-progress">Tozalash</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E. CONFIRMATION DIALOG MODAL -->
+  <div id="modal-confirm" class="modal-overlay">
+    <div class="confirm-box glass-card pop-in">
+      <div class="confirm-icon" id="confirm-modal-icon">⚠️</div>
+      <h3 class="confirm-title" id="confirm-modal-title">Haqiqatan ham o'chirilsinmi?</h3>
+      <p class="confirm-desc" id="confirm-modal-desc">Ushbu amalni ortga qaytarib bo‘lmaydi.</p>
+      <div class="confirm-actions">
+        <button class="btn-outline" id="confirm-btn-cancel">Bekor qilish</button>
+        <button class="btn-danger" id="confirm-btn-yes">Ha, tozalansin</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>
